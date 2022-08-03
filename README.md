@@ -1,4 +1,25 @@
-# ssdb协议（同redis使用RESP）
+# gossdb
+
+## 使用方法
+```shell
+go get -u github.com/kenami2009/gossdb
+```
+```go
+import "github.com/kenami2009/gossdb"
+
+...
+
+addr := "127.0.0.1:8888"
+conn, err := ssdb.Connect(addr)
+if err != nil {
+    fmt.Println(err)
+}
+conn.Do("set", "key", "value")
+replay, _ := conn.Do("get", "key")
+val, _ := ssdb.String(replay, nil)
+fmt.Println(val)
+```
+## ssdb协议（同redis使用RESP）
 
 ## RESP协议
 ```
